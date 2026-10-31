@@ -11,6 +11,7 @@ import {
 } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { assetPath } from "@/lib/config";
 import {
   AnimatePresence,
   motion,
@@ -68,7 +69,7 @@ function Picture({
 }) {
   return (
     <Image
-      src={src}
+      src={assetPath(src)}
       alt={alt}
       fill
       sizes={sizes}

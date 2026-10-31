@@ -1,10 +1,16 @@
 import type { Metadata, Viewport } from "next";
+import localFont from "next/font/local";
+import { assetPath, pageUrl, siteUrl } from "@/lib/config";
 import "./globals.css";
-const url =
-  process.env.NEXT_PUBLIC_SITE_URL ||
-  "https://nord-detailing-vexora.giddypath1.chatgpt.site";
+const geist = localFont({
+  src: "../../public/fonts/geist-latin.woff2",
+  variable: "--font-geist",
+  display: "swap",
+  weight: "100 900",
+});
 export const metadata: Metadata = {
-  metadataBase: new URL(url),
+  metadataBase: new URL(siteUrl),
+  alternates: { canonical: pageUrl("/") },
   title: {
     default: "NORD DETAILING — Precision in Every Detail",
     template: "%s | NORD DETAILING",
@@ -20,7 +26,7 @@ export const metadata: Metadata = {
       "Premium automotive care, thoughtfully imagined. A demonstration project by VEXORA Digital.",
     images: [
       {
-        url: "/images/hero.webp",
+        url: pageUrl("/images/hero.webp"),
         width: 1536,
         height: 1024,
         alt: "NORD DETAILING fictional studio concept",
@@ -29,7 +35,7 @@ export const metadata: Metadata = {
   },
   twitter: { card: "summary_large_image" },
   robots: { index: true, follow: true },
-  icons: { icon: "/icon.svg" },
+  icons: { icon: assetPath("/icon.svg") },
 };
 export const viewport: Viewport = { themeColor: "#090909" };
 export default function RootLayout({
@@ -38,7 +44,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className={geist.variable}>
       <body>{children}</body>
     </html>
   );

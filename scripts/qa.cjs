@@ -10,7 +10,10 @@ async function run() {
   });
   const errors = [];
   page.on("pageerror", (e) => errors.push(e.message));
-  const origin = "http://127.0.0.1:3000";
+  const origin = (process.env.SITE_TEST_URL || "http://127.0.0.1:3000").replace(
+    /\/$/,
+    "",
+  );
   try {
     for (const route of [
       "/",

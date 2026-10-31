@@ -21,6 +21,13 @@ node scripts/serve.mjs
 
 Проект использует статический экспорт Next.js App Router. Готовая сборка находится в `out/`. Команда `next start` для статического экспорта не применяется; используйте `node scripts/serve.mjs` для локальной проверки сборки.
 
+## GitHub Pages
+
+Сайт публикуется по адресу https://stixyrid.github.io/nord-detailing/.
+Workflow `.github/workflows/pages.yml` собирает статический сайт и публикует его после каждого push в `main`. В настройках репозитория Pages → Source используется GitHub Actions.
+
+Для проверки такой же сборки локально задайте `NEXT_PUBLIC_BASE_PATH=/nord-detailing` и `NEXT_PUBLIC_SITE_URL=https://stixyrid.github.io/nord-detailing`, затем выполните `npm run build` и `npm start` с тем же `NEXT_PUBLIC_BASE_PATH`. Адрес локальной версии: http://127.0.0.1:3000/nord-detailing/ . Без этих переменных проект по-прежнему собирается для корня домена.
+
 ## Развёртывание на Vercel
 
 1. Загрузите проект в свой Git-репозиторий и импортируйте его в Vercel.
